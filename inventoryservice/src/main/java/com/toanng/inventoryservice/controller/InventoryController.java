@@ -13,8 +13,10 @@ import lombok.experimental.FieldDefaults;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,5 +39,13 @@ public class InventoryController {
     @GetMapping("/inventory/event/{eventId}")
     public EventInventoryResponse inventoryForEvent(@PathVariable Long eventId) {
         return inventoryService.getEventInventory(eventId);
+    }
+
+    @PutMapping("inventory/event/{eventId}/capacity/{capacity}")
+    public ResponseEntity<Void> updateEventCapacity(@PathVariable("eventId") Long eventId,
+            @PathVariable("capacity") Long ticketsBooked) {
+        inventoryService.updateEventCapacity(eventId, ticketsBooked);
+
+        return ResponseEntity.ok().build();
     }
 }

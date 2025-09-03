@@ -22,6 +22,7 @@ public class OrderService {
     OrderRepository orderRepository;
     InventoryServiceClient inventoryServiceClient;
 
+    // kafka test
     @KafkaListener(topics = "booking", groupId = "order-service")
     public void orderEvent(BookingEvent bookingEvent) {
         log.info("Received order event: {}", bookingEvent);

@@ -7,5 +7,5 @@ import com.toanng.orderservice.entity.Order;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
-
+    // repo
 }
